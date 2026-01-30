@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.healthcare.controller.PatientController;
+
 import com.healthcare.model.Patient;
 import com.healthcare.repository.PatientRepository;
 
