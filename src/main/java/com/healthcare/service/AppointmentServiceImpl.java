@@ -132,7 +132,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 	    
 	    @Override
 	    public List<Appointment> getAppointmentsByDoctorId(Long doctorId) {
-	        return appointmentRepository.findByDoctor(doctorId);  // ← FIXED method name
+	        return appointmentRepository.findByDoctorId(doctorId);  
 	    }
 	    
 	    @Override
