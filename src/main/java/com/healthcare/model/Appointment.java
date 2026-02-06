@@ -48,7 +48,7 @@ public class Appointment {
 	
 
 	public Appointment() {
-		super();
+		
 	}
 
 	public Appointment(Patient patient, Doctor doctor, LocalDate appointmentDate, LocalTime appointmentTime,

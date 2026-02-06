@@ -30,7 +30,7 @@ public class Patient {
 	
 
 	public Patient() {
-		super();
+		
 	}
 	
 	
