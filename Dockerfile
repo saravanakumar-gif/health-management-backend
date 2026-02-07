@@ -13,7 +13,6 @@ RUN ./gradlew clean build -x check -x test -Pproduction
 
 EXPOSE 8081
 
-CMD ["java","-jar","app.jar"]
-
+CMD ["sh", "-c", "java -jar $(ls build/libs/*.jar)"]
 
 
