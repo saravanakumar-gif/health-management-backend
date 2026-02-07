@@ -11,7 +11,7 @@ RUN chmod +x gradlew
 RUN ./gradlew --version
 RUN ./gradlew clean build -x check -x test -Pproduction
 
-EXPOSE 8080
+EXPOSE 8081
 
 CMD ["sh", "-c", "java -jar $(ls build/libs/*.jar)"]
 
