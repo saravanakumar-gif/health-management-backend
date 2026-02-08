@@ -1,18 +1,30 @@
-FROM eclipse-temurin:17-jdk
-
-ENV JAVA_HOME=/opt/java/openjdk
-ENV PATH=$JAVA_HOME/bin:$PATH
+# Use Maven image that already has Maven installed
+FROM maven:3.9-eclipse-temurin-17 AS build
 
 WORKDIR /app
 
-COPY . .
+# Copy pom.xml
+COPY pom.xml .
 
-RUN chmod +x gradlew
-RUN ./gradlew --version
-RUN ./gradlew clean build -x check -x test -Pproduction
+# Download dependencies
+RUN mvn dependency:go-offline -B
 
+# Copy source code
+COPY src ./src
+
+# Build application
+RUN mvn clean package -DskipTests
+
+# Runtime stage
+FROM eclipse-temurin:17-jre-alpine
+
+WORKDIR /app
+
+# Copy jar from build stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Expose port
 EXPOSE 8080
 
-CMD ["sh", "-c", "java -jar $(ls build/libs/*.jar)"]
-
-
+# Run application
+ENTRYPOINT ["java", "-jar", "app.jar"]
