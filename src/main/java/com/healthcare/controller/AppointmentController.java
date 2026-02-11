@@ -70,13 +70,13 @@ public class AppointmentController {
  
  
  @GetMapping("/date/{date}")
- public ResponseEntity<List<Appointment>> getAppointmentsByDate(@PathVariable @DateTimeFormat(iso=DateTimeFormat.ISO.DATE)LocalDate date){
+ public ResponseEntity<List<Appointment>> getAppointmentsByDate(@PathVariable("date") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE)LocalDate date){
       List<Appointment> appointments=appointmentService.getAppointmentsByDate(date); 
 	 return ResponseEntity.ok(appointments);	 
  }
  
  @GetMapping("/status/{status}")
- public ResponseEntity<List<Appointment>> getAppointmentsByStatus(@PathVariable String status ){
+ public ResponseEntity<List<Appointment>> getAppointmentsByStatus(@PathVariable("status")   String status ){
 	 List<Appointment>appointments=appointmentService.getAppointmentsByStatus(status);
 	 return ResponseEntity.ok(appointments);
  }
@@ -113,7 +113,7 @@ public class AppointmentController {
 	
 	 
  @PatchMapping("/{id}/status")
- public ResponseEntity<?>updateAppointmentStatus(@PathVariable Long id, @RequestBody Map<String,String> statusUpdate){
+ public ResponseEntity<?>updateAppointmentStatus(@PathVariable("id") Long id, @RequestBody Map<String,String> statusUpdate){
 	try {
 		String status=statusUpdate.get("status");
 		if(status ==null || status.isEmpty()) {

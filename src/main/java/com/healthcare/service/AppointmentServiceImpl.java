@@ -142,22 +142,33 @@ public class AppointmentServiceImpl implements AppointmentService {
 	    
 	    @Override
 	    public List<Appointment> getAppointmentsByStatus(String status) {
-	        return appointmentRepository.findByStatus(status);
+	        return appointmentRepository.findByStatus(status.toUpperCase());
 	    }
+	    
 	    
 	    @Override
 	    public Appointment updateAppointmentStatus(Long id, String status) {
+
 	        Appointment appointment = appointmentRepository.findById(id)
 	            .orElseThrow(() -> new IllegalArgumentException("Appointment not found with id: " + id));
-	        
-	        // Validate status
-	        if (!status.equals("SCHEDULED") && !status.equals("COMPLETED") && 
-	            !status.equals("CANCELLED") && !status.equals("NO_SHOW")) {
-	            throw new IllegalArgumentException("Invalid status. Must be: SCHEDULED, COMPLETED, CANCELLED, or NO_SHOW");
+
+	        if (status == null || status.trim().isEmpty()) {
+	            throw new IllegalArgumentException("Status is required");
 	        }
-	        
-	        appointment.setStatus(status);
+
+	        String upperStatus = status.trim().toUpperCase();
+
+	        List<String> validStatuses = List.of("SCHEDULED", "COMPLETED", "CANCELLED", "NO_SHOW");
+
+	        if (!validStatuses.contains(upperStatus)) {
+	            throw new IllegalArgumentException("Invalid status value: " + status);
+	        }
+
+	        appointment.setStatus(upperStatus);
+
 	        return appointmentRepository.save(appointment);
 	    }
+
+	    
 	
 }
