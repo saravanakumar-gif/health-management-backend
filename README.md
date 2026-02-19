@@ -50,6 +50,7 @@ Build and Deployment:
 Maven 3.9 - Build automation and dependency management
 Docker - Containerization with multi-stage builds
 Railway Platform - Cloud deployment environment
+<img width="2076" height="1592" alt="NoteGPT-Flowchart-1771522783716" src="https://github.com/user-attachments/assets/d86b3675-003e-4045-940e-65b6147965fb" />
 
 
 
