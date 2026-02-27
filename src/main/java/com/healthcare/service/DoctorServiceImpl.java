@@ -79,6 +79,8 @@ public class DoctorServiceImpl implements DoctorService {
 		doctorRepository.deleteById(id);
 	}
 
+	
+	
 	@Override
 	public Doctor getDoctorById(Long id) {
 	    return doctorRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Doctor not found with id:" +id));
