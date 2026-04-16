@@ -1,58 +1,116 @@
-Purpose and Scope:
---------------------------
+# 🏥 Health Management System - Backend
 
-This document provides a high-level introduction to the Health Management System, a REST API backend for managing healthcare appointments, patients, and doctors. 
-The system is built with Spring Boot 3.2.1 and deployed as a containerized application on the Railway platform.
+## 📌 Description
 
-What is the Health Management System:
--------------------------------------
+This project is a backend REST API for a Health Management System. It is designed to manage healthcare-related data such as patients, doctors, appointments, and medical records efficiently.
 
-The Health Management System is a backend REST API application that provides comprehensive appointment scheduling and management capabilities for healthcare facilities. The application manages three core entities: patients, doctors, and appointments, along with supporting features like dashboard statistics and global search.
-The system is containerized using Docker and deployed on Railway's platform, connecting to a MySQL database for persistent storage. It exposes a complete REST API accessible at /api/* endpoints with full CORS support.
+The system provides structured APIs for handling hospital operations and ensures smooth communication between frontend and database.
 
+---
 
-Core Capabilities
-The Health Management System provides the following functional capabilities:
+## 🛠️ Tech Stack
 
-| **Feature Area**           | **Capabilities**                                                                                                   | **Primary Controller** |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------- |
-| **Appointment Management** | Create, read, update, delete appointments; query by patient, doctor, date, or status; update appointment status    | AppointmentController  |
-| **Patient Management**     | Register patients; update patient information; view patient list; delete patient records                           | PatientController      |
-| **Doctor Management**      | Register doctors; query doctors by specialization; view doctor profiles                                            | DoctorController       |
-| **Dashboard**              | View aggregate statistics (total patients, doctors, appointments); retrieve recent appointments; status breakdowns | DashboardController    |
-| **Search**                 | Global keyword search across patients and doctors                                                                  | SearchController       |
+* Backend: Java / Spring Boot
+* Database: MySQL / PostgreSQL
+* ORM: Hibernate / JPA
+* API: RESTful APIs
+* Tools: Maven
 
+---
 
+## ✨ Features
 
-Technology Stack
-----------------
-The application is built using the following technologies and frameworks:
+* 👤 Patient Management (Add, View, Update, Delete)
+* 👨‍⚕️ Doctor Management
+* 📅 Appointment Scheduling
+* 🗂️ Medical Records Handling
+* 🔄 CRUD Operations
+* 🔗 REST API Integration
 
-Core Framework:
+---
 
+## 📂 Project Structure
 
-Spring Boot 3.2.1 - Application framework and dependency injection container
-Java 17 - Programming language (Eclipse Temurin JDK/JRE)
+```id="v73k1k"
+health-management-backend/
+│── src/
+│   ├── main/
+│   │   ├── java/
+│   │   ├── resources/
+│── pom.xml
+│── application.properties
+```
 
-Web Layer:
+---
 
-Spring Web MVC (spring-boot-starter-web) - REST controller framework
-Jackson - JSON serialization/deserialization (included with Spring Web)
+## ⚙️ Installation
 
-Data Layer:
+### 1️⃣ Clone Repository
 
-Spring Data JPA (spring-boot-starter-data-jpa) - ORM abstraction layer
-Hibernate - JPA implementation with MySQL8 dialect
-MySQL Connector/J (mysql-connector-j) - JDBC driver
+```bash
+git clone https://github.com/saravanakumar-gif/health-management-backend.git
+cd health-management-backend
+```
 
-Build and Deployment:
+### 2️⃣ Configure Database
 
-Maven 3.9 - Build automation and dependency management
-Docker - Containerization with multi-stage builds
-Railway Platform - Cloud deployment environment
-<img width="2076" height="1592" alt="NoteGPT-Flowchart-1771522783716" src="https://github.com/user-attachments/assets/d86b3675-003e-4045-940e-65b6147965fb" />
+Update `application.properties`:
 
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/health_db
+spring.datasource.username=root
+spring.datasource.password=your_password
+```
 
+---
 
+### 3️⃣ Run Application
 
+```bash
+mvn spring-boot:run
+```
 
+---
+
+## 🚀 API Endpoints (Example)
+
+| Method | Endpoint       | Description      |
+| ------ | -------------- | ---------------- |
+| GET    | /patients      | Get all patients |
+| POST   | /patients      | Add patient      |
+| PUT    | /patients/{id} | Update patient   |
+| DELETE | /patients/{id} | Delete patient   |
+
+---
+
+## 🧪 Testing
+
+You can test APIs using:
+
+* Postman
+* Thunder Client
+
+---
+
+## 📸 Screenshots
+
+<img width="1920" height="786" alt="Screenshot (123)" src="https://github.com/user-attachments/assets/45c3012f-76b5-464a-b61d-328ccabfd537" />
+
+<img width="1920" height="778" alt="Screenshot (120)" src="https://github.com/user-attachments/assets/e99ae9d3-5096-4cc1-b8e0-456b4f133000" />
+
+<img width="1920" height="800" alt="Screenshot (121)" src="https://github.com/user-attachments/assets/7611735d-56ec-42dd-850a-848b6c25174e" />
+
+<img width="1920" height="787" alt="Screenshot (122)" src="https://github.com/user-attachments/assets/a4611d89-cd15-4080-9bb0-bcd91112939c" />
+
+---
+
+## 🔗 Related Project
+
+Frontend Repository:
+https://github.com/saravanakumar-gif/smart-expense-tracker-frontend
+
+---
+
+## 👨‍💻 Author
+
+Saravanakumar
